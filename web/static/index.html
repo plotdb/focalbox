@@ -60,12 +60,12 @@ view = new ldView({
 });
 fba = new focalbox({
   host: view.getAll('hosta'),
-  mode: 'danger',
+  'class': 'danger',
   padding: 9
 });
 fbb = new focalbox({
   host: view.getAll('hostb'),
-  mode: 'success',
+  'class': 'success',
   padding: 3
 });
 fbc = new focalbox({
@@ -75,7 +75,7 @@ fbc = new focalbox({
 });
 fbd = new focalbox({
   host: document.body,
-  mode: 'warning',
+  'class': 'warning',
   padding: 12,
   selector: 'i.ldif'
 });

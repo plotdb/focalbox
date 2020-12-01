@@ -10,6 +10,11 @@
     this.addHost(opt.host);
     this.selector = opt.selector || null;
     this.padding = opt.padding || 6;
+    this['class'] = Array.isArray(opt['class'])
+      ? opt['class']
+      : typeof opt['class'] === 'string'
+        ? opt['class'].split(' ')
+        : [];
     this.init();
     return this;
   };
@@ -17,16 +22,8 @@
     init: function(){
       document.body.appendChild(this.box = document.createElement('div'));
       this.box.classList.add('focalbox', 'hidden');
-      this.setMode(this.opt.mode || '');
+      this.box.classList.add.apply(this.box.classList, this['class']);
       return renderinfo.add(this);
-    },
-    setMode: function(n){
-      if (this.mode) {
-        this.box.classList.remove(this.mode);
-      }
-      if (this.mode = n) {
-        return this.box.classList.add(this.mode);
-      }
     },
     addHost: function(h){
       return this.hosts = this.hosts.concat((Array.isArray(h)
@@ -42,6 +39,14 @@
       }).filter(function(it){
         return it;
       }));
+    },
+    removeHost: function(h){
+      h = Array.isArray(h)
+        ? h
+        : [h];
+      return this.host = this.host.filter(function(it){
+        return ~h.indexOf(it);
+      });
     },
     setTarget: function(n){
       if (n && this.selector) {

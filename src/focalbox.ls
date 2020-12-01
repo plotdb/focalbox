@@ -7,6 +7,8 @@ main = (opt = {}) ->
   @add-host opt.host
   @selector = opt.selector or null
   @padding = opt.padding or 6
+  @class = if Array.isArray(opt.class) => opt.class
+  else if typeof(opt.class) == \string => opt.class.split(' ') else []
   @init!
   @
 
@@ -14,17 +16,16 @@ main.prototype = Object.create(Object.prototype) <<< do
   init: ->
     document.body.appendChild @box = document.createElement \div
     @box.classList.add \focalbox, \hidden
-    @set-mode(@opt.mode or '')
+    @box.classList.add.apply @box.classList, @class
     renderinfo.add @
-
-  set-mode: (n) ->
-    if @mode => @box.classList.remove @mode
-    if (@mode = n) => @box.classList.add @mode
 
   add-host: (h) ->
     @hosts ++= (if Array.isArray(h) => h else [h])
       .map -> if typeof(it) == \string => document.querySelector(it) else if it => it else null
       .filter -> it
+  remove-host: (h) ->
+    h = if Array.isArray(h) => h else [h]
+    @host = @host.filter -> ~h.indexOf(it)
 
   set-target: (n) ->
     if n and @selector => if !(n.matches and n.matches(@selector)) => return
