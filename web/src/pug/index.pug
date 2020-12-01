@@ -2,19 +2,19 @@ extends /base.pug
 block head
   +css("assets/lib/focalbox/dev/focalbox.css")
 block body
-  .w-1024.rwd.mx-auto.my-4
-    .btn.btn-outline-primary Hello World!
-    .card: .card-body
-      h1 Hi There!
-      p I'm a card.
+  include github.pug
 block script
   +script("assets/lib/focalbox/dev/focalbox.js")
   script: :lsc
-    fb = new focalbox host: document.body
-    lc = {idx: 0}
-    setInterval (->
-      if !(lc.idx % 7) => fb.set-target!
-      else if lc.idx % 2 => fb.set-target ld$.find('.btn', 0)
-      else fb.set-target ld$.find('.card', 0)
-      lc.idx++
-    ), 1000
+    view = new ldView do
+      root: document
+      handler: hosta: (->), hostb: (->)
+    fba = new focalbox host: view.getAll('hosta'), mode: \danger, padding: 9
+    fbb = new focalbox host: view.getAll('hostb'), mode: \success, padding: 3
+    fbc = new focalbox host: document.body, padding: 6, selector: 'span'
+    fbd = new focalbox host: document.body, mode: \warning, padding: 12, selector: 'i.ldif'
+    document.addEventListener \mouseover, (e) ->
+      fba.set-target e.target
+      fbb.set-target e.target
+      fbc.set-target e.target
+      fbd.set-target e.target

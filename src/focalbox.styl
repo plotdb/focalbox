@@ -1,21 +1,13 @@
-@keyframes focalbox-edit
+@keyframes focalbox
   0%
-    border-color: #1fc
+    filter: brightness(125%)
   50%
-    border-color: #2eb
+    filter: brightness(75%)
   100%
-    border-color: #1fc
-
-@keyframes focalbox-hover
-  0%
-    border-color: #1af
-  50%
-    border-color: #28e
-  100%
-    border-color: #1af
+    filter: brightness(125%)
 
 .focalbox
-  position: fixed
+  position: absolute
   top: 0
   left: 0
   z-index: 10000
@@ -24,10 +16,19 @@
   border: 3px solid #2be
   opacity: 0
   transition: opacity .15s ease-in-out
-  animation: focalbox-hover 1s infinite
+  animation: focalbox 1s infinite
 
 .focalbox.active
   opacity: 0.5
 
 .focalbox.moving
   transition: all .15s ease-in-out
+
+.focalbox.danger
+  border-color: #f31
+
+.focalbox.success
+  border-color: #4b6
+
+.focalbox.warning
+  border-color: #ea3
