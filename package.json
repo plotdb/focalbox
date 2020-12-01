@@ -18,7 +18,7 @@
   },
   "scripts": {
     "doc": "npx jsdoc -d web/static/doc dist/focalbox.js",
-    "start": "npx lsc server",
+    "start": "npx server -r web",
     "test": "npx mocha --require livescript ./test/index.ls",
     "coverage": "npx nyc --reporter=text npm run test"
   },
@@ -37,6 +37,8 @@
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
     "template": "github:zbryikt/template#v2.1.6",
+    "stylus": "^0.54.5",
+    "uglifycss": "0.0.29",
     "uglify-js": "=3.2.0"
   },
   "nyc": {

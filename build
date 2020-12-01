@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+echo "prepare..."
+rm -rf dist
+mkdir -p dist
+
+echo "building focalbox.ls -> focalbox.js ..."
+npx lsc -cp src/focalbox.ls > dist/focalbox.js
+echo "minify focalbox.js -> focalbox.min.js ..."
+npx uglifyjs dist/focalbox.js > dist/focalbox.min.js
+
+echo "build src/focalbox.styl -> dist/focalbox.css ..."
+npx stylus -p src/focalbox.styl > dist/focalbox.css
+echo "minifying focalbox.css ..."
+npx uglifycss dist/focalbox.css > dist/focalbox.min.css
+
+echo "copy dist to web ..."
+rm -rf web/static/assets/lib/focalbox/dev/
+mkdir -p web/static/assets/lib/focalbox/dev/
+cp -R dist/* web/static/assets/lib/focalbox/dev/
+

@@ -1,0 +1,20 @@
+extends /base.pug
+block head
+  +css("assets/lib/focalbox/dev/focalbox.css")
+block body
+  .w-1024.rwd.mx-auto.my-4
+    .btn.btn-outline-primary Hello World!
+    .card: .card-body
+      h1 Hi There!
+      p I'm a card.
+block script
+  +script("assets/lib/focalbox/dev/focalbox.js")
+  script: :lsc
+    fb = new focalbox host: document.body
+    lc = {idx: 0}
+    setInterval (->
+      if !(lc.idx % 7) => fb.set-target!
+      else if lc.idx % 2 => fb.set-target ld$.find('.btn', 0)
+      else fb.set-target ld$.find('.card', 0)
+      lc.idx++
+    ), 1000
