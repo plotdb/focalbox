@@ -1,0 +1,65 @@
+{
+  "author": "zbryikt",
+  "name": "focalbox",
+  "license": "MIT",
+  "description": "a box for highlighting your current focus",
+  "version": "0.0.1",
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/plotdb/focalbox",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plotdb/focalbox"
+  },
+  "engines": {
+    "node": ">=10.14.1",
+    "npm": ">=6.4.1"
+  },
+  "scripts": {
+    "doc": "npx jsdoc -d web/static/doc dist/focalbox.js",
+    "start": "npx lsc server",
+    "test": "npx mocha --require livescript ./test/index.ls",
+    "coverage": "npx nyc --reporter=text npm run test"
+  },
+  "devDependencies": {
+    "@loadingio/debounce.js": "0.0.1",
+    "@loadingio/ldquery": "^1.1.1",
+    "bootstrap": "^4.5.2",
+    "bootstrap.ldui": "github:loadingio/bootstrap.ldui",
+    "bootstrap.native": "^3.0.13",
+    "fedep": "0.0.7",
+    "jsdoc": "^3.6.6",
+    "ldcover": "^1.1.0",
+    "ldiconfont": "github:loadingio/ldiconfont",
+    "ldview": "0.0.2",
+    "livescript": ">=1.6.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "template": "github:zbryikt/template#v2.1.6",
+    "uglify-js": "=3.2.0"
+  },
+  "nyc": {
+    "all": true,
+    "extension": ".ls",
+    "require": [
+      "livescript"
+    ],
+    "include": [
+      "src/**/*"
+    ]
+  },
+  "frontendDependencies": {
+    "root": "web/static/assets/lib",
+    "modules": [
+      "bootstrap",
+      "bootstrap.ldui",
+      "bootstrap.native",
+      "@loadingio/ldquery",
+      "@loadingio/debounce.js",
+      "ldview",
+      "ldcover",
+      "ldiconfont"
+    ]
+  }
+}
