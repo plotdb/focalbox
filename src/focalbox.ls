@@ -19,6 +19,8 @@ main.prototype = Object.create(Object.prototype) <<< do
     @box.classList.add.apply @box.classList, @class
     renderinfo.add @
 
+  focus: (v=true) -> @box.classList.toggle \focus, v
+
   add-host: (h) ->
     @hosts ++= (if Array.isArray(h) => h else [h])
       .map -> if typeof(it) == \string => document.querySelector(it) else if it => it else null

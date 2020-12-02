@@ -25,10 +25,28 @@ constructor options:
 
 ## API
 
+ - focus(enable): set enable to true if to enter focus mode.
  - add-host(hosts): add elements ( Element or Array of Element ) as focalbox hosts.
  - remove-host(host): remove elements ( Element or Array of Element ) from focalbox hosts.
  - set-target(node): target `node` with focalbox
  - render: update focalbox
+
+
+## Focus Mode
+
+For now we use CSS `box-shadow` for overlay-with-hole effect in focus mode. It has following limitation:
+ - This allows only one focus focalbox at the same time, otherwise focalboxs will cover each other.
+ - Performance might be affected due to box-shadow calculation.
+ - Shadow range is hardcoded thus user may run out of the mask with a very long document.
+
+Other possible approachs include:
+ - use 2 elements nested: ( [@plotdb/masking](https://github.com/plotdb/masking) )
+   - root overlay with mix-blend-mode: hard-light
+   - hole div with #888 background color.
+ - use 4 DIVs to make up the overlay?
+ - fat border / outline
+ - small GIF with hole inside, and resized with `image-rendering` set to `pixelated`
+ - disucssion: https://stackoverflow.com/questions/20242806/hole-in-overlay-with-css
 
 
 ## License

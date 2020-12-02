@@ -25,6 +25,10 @@
       this.box.classList.add.apply(this.box.classList, this['class']);
       return renderinfo.add(this);
     },
+    focus: function(v){
+      v == null && (v = true);
+      return this.box.classList.toggle('focus', v);
+    },
     addHost: function(h){
       return this.hosts = this.hosts.concat((Array.isArray(h)
         ? h

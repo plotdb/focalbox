@@ -6,6 +6,7 @@ block body
 block script
   +script("assets/lib/focalbox/dev/focalbox.js")
   script: :lsc
+    lc = {}
     view = new ldView do
       root: document
       handler: hosta: (->), hostb: (->)
@@ -13,6 +14,8 @@ block script
     fbb = new focalbox host: view.getAll('hostb'), class: \success, padding: 3
     fbc = new focalbox host: document.body, padding: 6, selector: 'span'
     fbd = new focalbox host: document.body, class: \warning, padding: 12, selector: 'i.ldif'
+    document.addEventListener \keydown, (e) -> if e.altKey => fba.focus!
+    document.addEventListener \keyup, (e) -> if !e.altKey => fba.focus false
     document.addEventListener \mouseover, (e) ->
       fba.set-target e.target
       fbb.set-target e.target

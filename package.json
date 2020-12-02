@@ -3,7 +3,7 @@
   "name": "focalbox",
   "license": "MIT",
   "description": "a box for highlighting your current focus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist/**/*"
   ],
