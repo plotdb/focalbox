@@ -26,9 +26,10 @@ constructor options:
 ## API
 
  - focus(enable): set enable to true if to enter focus mode.
- - add-host(hosts): add elements ( Element or Array of Element ) as focalbox hosts.
- - remove-host(host): remove elements ( Element or Array of Element ) from focalbox hosts.
- - set-target(node): target `node` with focalbox
+ - isFocused(): return true if focalbox is in focus mode
+ - addHost(hosts): add elements ( Element or Array of Element ) as focalbox hosts.
+ - removeHost(host): remove elements ( Element or Array of Element ) from focalbox hosts.
+ - setTarget(node): target `node` with focalbox
  - render: update focalbox
 
 

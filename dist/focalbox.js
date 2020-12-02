@@ -41,6 +41,9 @@
       this.box.classList.add.apply(this.box.classList, this['class']);
       return renderinfo.add(this);
     },
+    isFocused: function(){
+      return this.box.classList.contains('focus');
+    },
     focus: function(v){
       v == null && (v = true);
       this.box.classList.toggle('focus', v);

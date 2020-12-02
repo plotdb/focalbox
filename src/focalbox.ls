@@ -30,6 +30,7 @@ main.prototype = Object.create(Object.prototype) <<< do
     @box.classList.add.apply @box.classList, @class
     renderinfo.add @
 
+  is-focused: -> return @box.classList.contains \focus
   focus: (v=true) ->
     @box.classList.toggle \focus, v
     hub.focus v
