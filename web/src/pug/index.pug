@@ -17,6 +17,8 @@ block script
     document.addEventListener \keydown, (e) -> if e.altKey => fba.focus!
     document.addEventListener \keyup, (e) -> if !e.altKey => fba.focus false
     document.addEventListener \mouseover, (e) ->
+      if lc.once => return
+      #lc.once = true
       fba.set-target e.target
       fbb.set-target e.target
       fbc.set-target e.target

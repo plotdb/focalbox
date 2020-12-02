@@ -91,6 +91,9 @@ document.addEventListener('keyup', function(e){
   }
 });
 document.addEventListener('mouseover', function(e){
+  if (lc.once) {
+    return;
+  }
   fba.setTarget(e.target);
   fbb.setTarget(e.target);
   fbc.setTarget(e.target);

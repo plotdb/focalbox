@@ -1,5 +1,15 @@
 # option
 #  - host: host node(s) to use focalbox
+
+hub = do
+  focus: (v=true) -> @mask.classList.toggle \active, v
+  init: ->
+    if @root => return
+    document.body.appendChild hub.root = document.createElement \div
+    hub.root.appendChild hub.mask = document.createElement \div
+    hub.root.classList.add \focalbox-host
+    hub.mask.classList.add \focalbox-mask
+
 main = (opt = {}) ->
   @opt = opt
   @ <<< box: null, target: null
@@ -14,12 +24,15 @@ main = (opt = {}) ->
 
 main.prototype = Object.create(Object.prototype) <<< do
   init: ->
-    document.body.appendChild @box = document.createElement \div
-    @box.classList.add \focalbox, \hidden
+    hub.init!
+    hub.root.appendChild @box = document.createElement \div
+    @box.classList.add \focalbox
     @box.classList.add.apply @box.classList, @class
     renderinfo.add @
 
-  focus: (v=true) -> @box.classList.toggle \focus, v
+  focus: (v=true) ->
+    @box.classList.toggle \focus, v
+    hub.focus v
 
   add-host: (h) ->
     @hosts ++= (if Array.isArray(h) => h else [h])
