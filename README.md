@@ -49,6 +49,7 @@ Other possible approachs include:
  - small GIF with hole inside, and resized with `image-rendering` set to `pixelated`
  - disucssion: https://stackoverflow.com/questions/20242806/hole-in-overlay-with-css
 
+Due to the (possibly) background propagation issue, you will need an additional tag between `body` and your root element to make focus mask work correctly. Or alternatively, explicitly set `html` and `body`'s background color.
 
 ## License
 
